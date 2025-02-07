@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/product")
@@ -38,7 +40,7 @@ public class ProductController {
 
     @GetMapping("/list")
     public String productListPage(Model model) {
-        List<Product> allProducts = service.findAll();
+        Map<String, Product> allProducts = service.findAll();
         model.addAttribute("products", allProducts);
         return "productList";
     }

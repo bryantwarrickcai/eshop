@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Service
 public class ProductServiceImpl implements ProductService {
     @Autowired
@@ -21,10 +24,10 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> findAll() {
+    public Map<String, Product> findAll() {
         Iterator<Product> productIterator = productRepository.findAll();
-        List<Product> allProduct = new ArrayList<>();
-        productIterator.forEachRemaining(allProduct::add);
+        Map<String, Product> allProduct = new HashMap<>();
+        productIterator.forEachRemaining(p -> allProduct.put(p.getProductId(), p));
         return allProduct;
     }
 }

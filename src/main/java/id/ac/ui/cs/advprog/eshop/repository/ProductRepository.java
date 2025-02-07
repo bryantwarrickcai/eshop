@@ -6,17 +6,19 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @Repository
 public class ProductRepository {
-    private List<Product> productData = new ArrayList<>();
+    private Map<String, Product> productData = new HashMap<>();
 
     public Product create(Product product) {
-        productData.add(product);
+        productData.put(product.getProductId(), product);
         return product;
     }
 
     public Iterator<Product> findAll() {
-        return productData.iterator();
+        return productData.values().iterator();
     }
 }
