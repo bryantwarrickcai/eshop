@@ -21,7 +21,7 @@
         </thead>
         <tbody>
         <tr th:each="product: ${products.values()}">
-            <td th:text="${product.productId + ' ' + product.productName}"></td>
+            <td th:text="${product.productName}"></td>
             <td th:text="${product.productQuantity}"></td>
             <td>
                 <a th:href="@{/product/{productId}/edit(productId=${product.productId})}" class="btn btn-primary btn-sm">Edit Product</a>

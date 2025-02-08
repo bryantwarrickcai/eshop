@@ -1,0 +1,4 @@
+## Bryant Warrick Cai, 2306256255 - E-Shop
+
+### Reflection 1
+I used meaningful names for my methods in the `ProductController` class, such as `editProductPage`, `editProductPost`, and `deleteProductPage`. These names clearly convey the purpose of these methods. I also used a `Map` instead of a `List` so that it's easier to access each product in the database based on the product ID (UUID). The form is also safe from XSS Attacks. This can be proven by trying to enter `<img src="x" onerror="alert('XSS Attack!')">` into the product name. It will interpret this as literal text instead of executing it as HTML code. A bit of a mistake in the code is that the product data will not stay on permanently, and will disappear if you stop the program and then run it again. A solution to this is to store the list of products in a file, and then accessing that file for the list of products.
