@@ -1,6 +1,7 @@
 package id.ac.ui.cs.advprog.eshop.controller;
 
 import id.ac.ui.cs.advprog.eshop.model.Product;
+import id.ac.ui.cs.advprog.eshop.repository.ProductRepository;
 import id.ac.ui.cs.advprog.eshop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,12 +32,20 @@ public class ProductController {
     }
 
     @GetMapping("/{productId}/edit")
-    public String editProductPage(Model model, @PathVariable int productId) {
+    public String editProductPage(@PathVariable String productId, Model model) {
+        Product product = service.getById(productId);
+        model.addAttribute("product", product);
         return "editProduct";
     }
 
-//    @PostMapping("/{productId}/edit")
-//    // public String editProductPost
+    @PostMapping("/{productId}/edit")
+    public String editProductPost(@ModelAttribute Product updatedProduct, @PathVariable String productId) {
+        Product existingProduct = service.getById(productId);
+
+        existingProduct.edit(updatedProduct.getProductName(), updatedProduct.getProductQuantity());
+
+        return "redirect:/product/list";
+    }
 
     @GetMapping("/list")
     public String productListPage(Model model) {

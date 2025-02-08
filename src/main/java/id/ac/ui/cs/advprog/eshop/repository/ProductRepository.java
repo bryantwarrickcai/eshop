@@ -18,6 +18,10 @@ public class ProductRepository {
         return product;
     }
 
+    public Product getById(String productId) {
+        return productData.get(productId);
+    }
+
     public Iterator<Product> findAll() {
         return productData.values().iterator();
     }

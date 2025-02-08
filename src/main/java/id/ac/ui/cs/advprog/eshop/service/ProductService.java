@@ -7,5 +7,6 @@ import java.util.Map;
 
 public interface ProductService {
     public Product create(Product product);
+    public Product getById(String productId);
     public Map<String, Product> findAll();
 }

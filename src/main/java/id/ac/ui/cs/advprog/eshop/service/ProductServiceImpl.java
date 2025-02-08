@@ -23,6 +23,10 @@ public class ProductServiceImpl implements ProductService {
         return product;
     }
 
+    public Product getById(String productId) {
+        return productRepository.getById(productId);
+    }
+
     @Override
     public Map<String, Product> findAll() {
         Iterator<Product> productIterator = productRepository.findAll();
