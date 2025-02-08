@@ -43,6 +43,7 @@ class ProductRepositoryTest {
         assertFalse(productIterator.hasNext());
     }
 
+    /** This test failed because I used a Map instead of a List. */
     @Test
     void testFindAllIfMoreThanOneProduct() {
         Product product1 = new Product();
@@ -52,7 +53,7 @@ class ProductRepositoryTest {
         productRepository.create(product1);
 
         Product product2 = new Product();
-        product2.setProductId("a0f9de46-90bi-437d-a0bf-d0821dde9096");
+        product2.setProductId("a0f9de46-90b1-437d-a0bf-d0821dde9096");
         product2.setProductName("Sampo Cap Usep");
         product2.setProductQuantity(50);
         productRepository.create(product2);
