@@ -22,6 +22,10 @@ public class ProductRepository {
         return productData.get(productId);
     }
 
+    public Product delete(Product product) {
+        return productData.remove(product.getProductId());
+    }
+
     public Iterator<Product> findAll() {
         return productData.values().iterator();
     }

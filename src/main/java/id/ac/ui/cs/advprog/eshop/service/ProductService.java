@@ -8,5 +8,6 @@ import java.util.Map;
 public interface ProductService {
     public Product create(Product product);
     public Product getById(String productId);
+    public Product delete(Product product);
     public Map<String, Product> findAll();
 }
