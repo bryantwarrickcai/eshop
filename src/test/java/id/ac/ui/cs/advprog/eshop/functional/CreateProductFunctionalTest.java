@@ -59,7 +59,7 @@ class CreateProductFunctionalTest {
         WebElement submitButton = driver.findElement(By.id("submit"));
         submitButton.click();
         Thread.sleep(2000);
-        
+
         WebElement table = driver.findElement(By.tagName("table"));
         WebElement secondRow = table.findElements(By.tagName("tr")).get(1);
         List<WebElement> columnsForSecondRow = secondRow.findElements(By.tagName("td"));
