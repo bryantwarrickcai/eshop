@@ -66,4 +66,54 @@ class ProductRepositoryTest {
         assertEquals(product2.getProductId(), savedProduct.getProductId());
         assertFalse(productIterator.hasNext());
     }
+
+    @Test
+    void testCreateAndEdit() {
+        Product product = new Product();
+        product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        product.setProductName("Sampo Cap Bambang");
+        product.setProductQuantity(100);
+        productRepository.create(product);
+
+        // Positive scenario
+        String newName = "Hello World";
+        int newQuantity = 80;
+
+        product.edit(newName, newQuantity);
+
+        assertEquals(newName, product.getProductName());
+        assertEquals(newQuantity, product.getProductQuantity());
+
+        // Negative scenario
+        try {
+            product.edit("Hello", Integer.parseInt("abc")); // Cannot convert string to int
+            fail("Expected NumberFormatException to be thrown");
+        } catch (NumberFormatException e) {
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    void testDelete() {
+        Product product = new Product();
+        product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        product.setProductName("Sampo Cap Bambang");
+        product.setProductQuantity(100);
+        productRepository.create(product);
+
+        productRepository.delete(product);
+        // Trying to access the product
+        Product obtainedProduct = productRepository.getById("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        // Trying to access a non-existent map key will not return an error,
+        // but rather will return null instead.
+        assertEquals(null, obtainedProduct);
+
+        // Negative scenario: Trying to delete a product that does not exist
+        Product nonExistentProduct = new Product();
+        nonExistentProduct.setProductId("ea24c24d-a1be-40fd-b201-7d95d6e95151");
+
+        // If the product cannot be found, it will return null.
+        Product deletedProduct = productRepository.delete(nonExistentProduct);
+        assertEquals(null, deletedProduct);
+    }
 }
