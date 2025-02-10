@@ -58,12 +58,34 @@ class ProductRepositoryTest {
         product2.setProductQuantity(50);
         productRepository.create(product2);
 
+        // I changed the tests a bit in this part because I used a map instead of a list.
         Iterator<Product> productIterator = productRepository.findAll();
         assertTrue(productIterator.hasNext());
+
+        String[] productIds = {product1.getProductId(), product2.getProductId()};
+
         Product savedProduct = productIterator.next();
-        assertEquals(product1.getProductId(), savedProduct.getProductId());
+        // Test if the next iterated product ID is one of the products
+        boolean exists = false;
+        for (String productId : productIds) {
+            if (productId.equals(savedProduct.getProductId())) {
+                exists = true;
+                break;
+            }
+        }
+        assertTrue(exists);
+
         savedProduct = productIterator.next();
-        assertEquals(product2.getProductId(), savedProduct.getProductId());
+        // Test if the next iterated product ID is one of the products
+        exists = false;
+        for (String productId : productIds) {
+            if (productId.equals(savedProduct.getProductId())) {
+                exists = true;
+                break;
+            }
+        }
+        assertTrue(exists);
+
         assertFalse(productIterator.hasNext());
     }
 

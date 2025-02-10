@@ -13,6 +13,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
+class HomeController {
+    @GetMapping("/")
+    public String homePage(Model model) {
+        return "HomePage";
+    }
+}
+
+@Controller
 @RequestMapping("/product")
 public class ProductController {
     @Autowired
