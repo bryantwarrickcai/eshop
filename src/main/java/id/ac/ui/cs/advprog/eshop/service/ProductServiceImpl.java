@@ -17,6 +17,10 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductRepository productRepository;
 
+    public void createRepository() {
+        productRepository = new ProductRepository();
+    }
+
     @Override
     public Product create(Product product) {
         productRepository.create(product);
