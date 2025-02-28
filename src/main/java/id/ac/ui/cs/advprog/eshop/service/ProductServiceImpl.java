@@ -2,6 +2,7 @@ package id.ac.ui.cs.advprog.eshop.service;
 
 import id.ac.ui.cs.advprog.eshop.model.Product;
 import id.ac.ui.cs.advprog.eshop.repository.ProductRepository;
+import id.ac.ui.cs.advprog.eshop.repository.ProductRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,12 +12,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
-public class ProductServiceImpl implements ProductService {
+public class ProductServiceImpl implements ProductServiceRead, ProductServiceWrite {
     @Autowired
     private ProductRepository productRepository;
 
     public void createRepository() {
-        productRepository = new ProductRepository();
+        productRepository = new ProductRepositoryImpl();
     }
 
     @Override
