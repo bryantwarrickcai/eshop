@@ -43,7 +43,7 @@ Not following SOLID principles also makes your code harder to test. This makes u
 ### Reflection
 1.
 Correctness: All the test cases created have been created to ensure that the code produces the expected results in various scenarios.  
-Maintainability: All the test cases are easy to read and understandable to be modified over time.
+Maintainability: All the test cases are easy to read and understandable to be modified over time.  
 Productive Workflow: All these test cases are ensured to be smooth, fast, and integrated into the workflow. These good practices allows developers to catch code issues early and confidently make changes without breaking the rest of the code.
 
 2.
