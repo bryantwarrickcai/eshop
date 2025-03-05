@@ -1,6 +1,7 @@
 package id.ac.ui.cs.advprog.eshop.model;
 
 import id.ac.ui.cs.advprog.eshop.enums.PaymentMethod;
+import id.ac.ui.cs.advprog.eshop.enums.PaymentStatus;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -39,7 +40,7 @@ public class Payment {
         // Check the type of payment method
         if (this.method.equals(PaymentMethod.VOUCHER.getValue())) {
             if (this.paymentData.size() != 1 || !this.paymentData.containsKey("voucherCode")) {
-                this.status = "REJECTED";
+                this.status = PaymentStatus.REJECTED.getValue();
             } else {
                 String voucherCode = this.paymentData.get("voucherCode");
 
@@ -53,23 +54,23 @@ public class Payment {
                 if (voucherCode.length() == 16 &&
                         voucherCode.substring(0, 5).equals("ESHOP") &&
                         numberOfNumericCharacters == 8) {
-                    this.status = "SUCCESS";
+                    this.status = PaymentStatus.SUCCESS.getValue();
                 } else {
-                    this.status = "REJECTED";
+                    this.status = PaymentStatus.REJECTED.getValue();
                 }
             }
         } else if (this.method.equals(PaymentMethod.CASH_ON_DELIVERY.getValue())) {
             if (this.paymentData.size() != 2 ||
                     !this.paymentData.containsKey("address") ||
                     !this.paymentData.containsKey("deliveryFee")) {
-                this.status = "REJECTED";
+                this.status = PaymentStatus.REJECTED.getValue();
             } else {
                 String address = this.paymentData.get("address");
                 String deliveryFee = this.paymentData.get("deliveryFee");
                 if (address == null || address.isEmpty() || deliveryFee == null || deliveryFee.isEmpty()) {
-                    this.status = "REJECTED";
+                    this.status = PaymentStatus.REJECTED.getValue();
                 } else {
-                    this.status = "SUCCESS";
+                    this.status = PaymentStatus.SUCCESS.getValue();
                 }
             }
         }
