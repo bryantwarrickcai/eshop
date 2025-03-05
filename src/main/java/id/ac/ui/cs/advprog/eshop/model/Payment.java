@@ -1,5 +1,6 @@
 package id.ac.ui.cs.advprog.eshop.model;
 
+import id.ac.ui.cs.advprog.eshop.enums.PaymentMethod;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -27,17 +28,7 @@ public class Payment {
     }
 
     public void setMethod(String method) {
-        String[] methods = {"VOUCHER", "CASH_ON_DELIVERY"};
-
-        boolean found = false;
-        for (String methodName : methods) {
-            if (method.equals(methodName)) {
-                found = true;
-                break;
-            }
-        }
-
-        if (found) {
+        if (PaymentMethod.contains(method)) {
             this.method = method;
         } else {
             throw new IllegalArgumentException();
@@ -46,7 +37,7 @@ public class Payment {
 
     public void setStatus() {
         // Check the type of payment method
-        if (this.method.equals("VOUCHER")) {
+        if (this.method.equals(PaymentMethod.VOUCHER.getValue())) {
             if (this.paymentData.size() != 1 || !this.paymentData.containsKey("voucherCode")) {
                 this.status = "REJECTED";
             } else {
@@ -67,7 +58,7 @@ public class Payment {
                     this.status = "REJECTED";
                 }
             }
-        } else if (this.method.equals("CASH_ON_DELIVERY")) {
+        } else if (this.method.equals(PaymentMethod.CASH_ON_DELIVERY.getValue())) {
             if (this.paymentData.size() != 2 ||
                     !this.paymentData.containsKey("address") ||
                     !this.paymentData.containsKey("deliveryFee")) {
