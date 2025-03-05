@@ -34,7 +34,7 @@ class PaymentTest {
         Payment payment = new Payment("b0df7140-6baf-4e7b-bdba-392a6e64f16e",
                 PaymentMethod.VOUCHER.getValue(), paymentData);
 
-        assertEquals("SUCCESS", payment.status);
+        assertEquals(PaymentStatus.SUCCESS.getValue(), payment.status);
         assertEquals("b0df7140-6baf-4e7b-bdba-392a6e64f16e", payment.getId());
         assertEquals(PaymentMethod.VOUCHER.getValue(), payment.getMethod());
         assertEquals(paymentData, payment.getPaymentData());
@@ -47,7 +47,7 @@ class PaymentTest {
 
         Payment payment = new Payment("b0df7140-6baf-4e7b-bdba-392a6e64f16e",
                 PaymentMethod.VOUCHER.getValue(), paymentData);
-        assertEquals("REJECTED", payment.status);
+        assertEquals(PaymentStatus.REJECTED.getValue(), payment.status);
     }
 
     @Test
@@ -57,7 +57,7 @@ class PaymentTest {
 
         Payment payment = new Payment("b0df7140-6baf-4e7b-bdba-392a6e64f16e",
                 PaymentMethod.VOUCHER.getValue(), paymentData);
-        assertEquals("REJECTED", payment.status);
+        assertEquals(PaymentStatus.REJECTED.getValue(), payment.status);
     }
 
     @Test
@@ -67,7 +67,7 @@ class PaymentTest {
 
         Payment payment = new Payment("b0df7140-6baf-4e7b-bdba-392a6e64f16e",
                 PaymentMethod.VOUCHER.getValue(), paymentData);
-        assertEquals("REJECTED", payment.status);
+        assertEquals(PaymentStatus.REJECTED.getValue(), payment.status);
     }
 
     @Test
@@ -77,7 +77,7 @@ class PaymentTest {
 
         Payment payment = new Payment("b0df7140-6baf-4e7b-bdba-392a6e64f16e",
                 PaymentMethod.VOUCHER.getValue(), paymentData);
-        assertEquals("REJECTED", payment.status);
+        assertEquals(PaymentStatus.REJECTED.getValue(), payment.status);
     }
 
     @Test
@@ -89,7 +89,7 @@ class PaymentTest {
         Payment payment = new Payment("b0df7140-6baf-4e7b-bdba-392a6e64f16e",
                 PaymentMethod.CASH_ON_DELIVERY.getValue(), paymentData);
 
-        assertEquals("SUCCESS", payment.status);
+        assertEquals(PaymentStatus.SUCCESS.getValue(), payment.status);
         assertEquals("b0df7140-6baf-4e7b-bdba-392a6e64f16e", payment.getId());
         assertEquals(PaymentMethod.CASH_ON_DELIVERY.getValue(), payment.getMethod());
         assertEquals(paymentData, payment.getPaymentData());
@@ -104,7 +104,7 @@ class PaymentTest {
         Payment payment = new Payment("b0df7140-6baf-4e7b-bdba-392a6e64f16e",
                 PaymentMethod.CASH_ON_DELIVERY.getValue(), paymentData);
 
-        assertEquals("REJECTED", payment.status);
+        assertEquals(PaymentStatus.REJECTED.getValue(), payment.status);
     }
 
     @Test
@@ -116,7 +116,7 @@ class PaymentTest {
         Payment payment = new Payment("b0df7140-6baf-4e7b-bdba-392a6e64f16e",
                 PaymentMethod.CASH_ON_DELIVERY.getValue(), paymentData);
 
-        assertEquals("REJECTED", payment.status);
+        assertEquals(PaymentStatus.REJECTED.getValue(), payment.status);
     }
 
     @Test
@@ -128,7 +128,7 @@ class PaymentTest {
         Payment payment = new Payment("b0df7140-6baf-4e7b-bdba-392a6e64f16e",
                 PaymentMethod.CASH_ON_DELIVERY.getValue(), paymentData);
 
-        assertEquals("REJECTED", payment.status);
+        assertEquals(PaymentStatus.REJECTED.getValue(), payment.status);
     }
 
     @Test
@@ -140,7 +140,7 @@ class PaymentTest {
         Payment payment = new Payment("b0df7140-6baf-4e7b-bdba-392a6e64f16e",
                 PaymentMethod.CASH_ON_DELIVERY.getValue(), paymentData);
 
-        assertEquals("REJECTED", payment.status);
+        assertEquals(PaymentStatus.REJECTED.getValue(), payment.status);
     }
 
     @Test
@@ -153,7 +153,7 @@ class PaymentTest {
         Payment payment = new Payment("b0df7140-6baf-4e7b-bdba-392a6e64f16e",
                 PaymentMethod.CASH_ON_DELIVERY.getValue(), paymentData);
 
-        assertEquals("REJECTED", payment.status);
+        assertEquals(PaymentStatus.REJECTED.getValue(), payment.status);
     }
 
     @Test
@@ -165,6 +165,6 @@ class PaymentTest {
         Payment payment = new Payment("b0df7140-6baf-4e7b-bdba-392a6e64f16e",
                 PaymentMethod.CASH_ON_DELIVERY.getValue(), paymentData);
 
-        assertEquals("REJECTED", payment.status);
+        assertEquals(PaymentStatus.REJECTED.getValue(), payment.status);
     }
 }
