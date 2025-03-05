@@ -26,13 +26,31 @@ LSP: Yes. LSP states that when a subclass inherits from a base class, it should 
 ISP: No. I modified CarService.java so that I separate them into two services: CarServiceRead (methods for reading) and CarServiceWrite (methods for writing). I also did the same thing with ProductService.java, and I also changed the `service` in `ProductController` to use `ProductServiceImpl` instead of `ProductService`.<br>
 <br>
 DIP: No. This principle states that high-level modules should not depend on low-level modules, and should depend on abstractions instead. Additionally, abstraction should not depend on details, but rather the details must rely on abstraction. I fixed this code by adding interfaces for `CarRepository` and `ProductRepository` titled `CarRepositoryInterface` and `ProductRepositoryInterface` respectively.
+
 2. Applying SOLID principles to a project can provide a significant amount of benefits that improve the maintainability of the project. One of the advantages include allowing it easier to modify, test, and extend a code. For example, by following the SRP principle, if there is a bug in a code, or if a part of a code needs to be changed, it is likely only contained within a specific class rather than scattered across the project, making it safer to debug and modify code without introducing more bugs. For example, if we need to modify some implementations regarding the HTML requests and other stuff, we can modify or add it directly in `CarController`.<br>
 <br>
 With the ISP principle, it ensures that clients are not forced to depend on interfaces that they do not use. By appling ISP, we can create separate interfaces for different functionality, to ensure that not all functionalities are forced. In this example, when I created two services for CarService (`CarServiceRead` and `CarServiceWrite`), we can ensure that a new service only implements the required functionalities and not all of them. If they need to implement all functionalities, they can use multiple interfaces in the class.<br>
 <br>
 Additionally, by implementing SOLID principles, it often leads to a more cleaner and intuitive design. This is especially beneficial when working in a team, as these principles follow guidelines that all team members can follow. The end result also leads to code that is easier for other people to understand and modify.
+
 3. By not applying SOLID principles in our code, it can lead to many disadvantages. One of them is that different parts of the codebase may become too dependent on each other. This could make changing parts of the code risky, as it may break functionality of other parts of the system.<br>
 <br>
 Another disadvantage is reducing code reusability. By not following SOLID principles, it may be difficult to re-use part of a code in different parts of the application. For example, if a reporting system is designed only for one type of data format, it cannot be re-used for another format.<br>
 <br>
 Not following SOLID principles also makes your code harder to test. This makes unit testing difficult, as this type of code is often dependent on concrete implementations rather than abstractions. For example, if a service class directly creates database connections instead of depending on an interface, unit testing would require an actual database, making testing more difficult and slowing down development.
+
+## Module 4
+### Reflection
+1.
+Correctness: All the test cases created have been created to ensure that the code produces the expected results in various scenarios.  
+Maintainability: All the test cases are easy to read and understandable to be modified over time.  
+Productive Workflow: All these test cases are ensured to be smooth, fast, and integrated into the workflow. These good practices allows developers to catch code issues early and confidently make changes without breaking the rest of the code.
+
+2.
+I think that my tests already follow the F.I.R.S.T. principle.
+
+Fast: All these tests do not run quickly.  
+Isolated/Independent: None of these tests depend on one another.  
+Repeatable: These tests produce the same results every time, regardless of environment.  
+Self-Validating: These tests have a clear pass/fail outcome.  
+Timely: These tests are all written before the production code.
