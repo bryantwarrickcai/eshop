@@ -75,4 +75,8 @@ public class Payment {
             }
         }
     }
+
+    public void setStatusManual(String status) {
+        this.status = status;
+    }
 }
